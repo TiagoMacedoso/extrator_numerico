@@ -4,6 +4,10 @@ const btnColar = document.querySelector("#btnColar");
 const btnCopiar = document.querySelector("#btnCopiar");
 const btnRemover = document.querySelector("#btnRemover");
 
+inputEntrada.addEventListener('keypress', (e) => {
+    if(e.keyCode == 13) removerCaracteres();
+});
+
 btnRemover.addEventListener("click", ()=>{
     removerCaracteres();
 
@@ -35,6 +39,8 @@ btnCopiar.addEventListener("click", () => {
 });
 
 function removerCaracteres(){
+    cliqueNosBotoes(btnRemover, "Remover", "Removido");
+
     textoInput = inputEntrada.value;
 
     spanResultado.textContent = textoInput.replace(/[^0-9]/g, "");
@@ -49,5 +55,5 @@ function cliqueNosBotoes(botao, textoAntigo, novoTexto) {
     setTimeout(() => {
         botao.innerText = textoAntigo;
         botao.classList.remove('realizado');
-    }, 1000);
+    }, 500);
 }
